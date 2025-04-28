@@ -22,7 +22,7 @@ class StartScene extends Phaser.Scene {
         // Game title
         const titleText = this.add.text(config.width / 2, config.height / 5, 'Raccogli i tesori con Nami', {
             fontFamily: 'Arial',
-            fontSize: '30px',
+            fontSize: '35px',
             fontStyle: 'bold',
             color: '#ffffff',
             stroke: '#000000',
@@ -34,7 +34,7 @@ class StartScene extends Phaser.Scene {
         const instructionsText = this.add.text(config.width / 2, config.height / 3-30, 
             'Guida la tua nave pirata attraverso mari insidiosi, raccogli il maggior\n numero di forzieri schiva le isole \nper conquistare la gloria dei sette mari!', {
             fontFamily: 'Arial',
-            fontSize: '12px',
+            fontSize: '14px',
             fontStyle: 'italic',
             color: '#ffffff',
             stroke: '#000000',
@@ -557,13 +557,18 @@ class GameScene extends Phaser.Scene {
     }
 
     collectChest(ship, chest) {
-        chest.destroy();
-        gameSettings.score += 10;
-        this.scoreText.setText(`Punteggio: ${gameSettings.score}`);
+        if (ship.x > chest.x) {
+            chest.destroy();
+            gameSettings.score += 10;
+            this.scoreText.setText(`Punteggio: ${gameSettings.score}`);
+        }
+        //chest.destroy();
+        //gameSettings.score += 10;
+        //this.scoreText.setText(`Punteggio: ${gameSettings.score}`);
     }
 
     hitObstacle(ship, obstacle) {
-        if (!this.isInvulnerable) {
+        if (ship.x > obstacle.x && !this.isInvulnerable) {
             obstacle.destroy();
             gameSettings.lives--;
             this.livesText.setText(`Vite: ${gameSettings.lives}`);
@@ -616,7 +621,7 @@ class GameOverScene extends Phaser.Scene {
         // Game over text
         this.add.text(config.width / 2, config.height / 5, textGameOver, {
             fontFamily: 'Arial',
-            fontSize: '64px',
+            fontSize: '40px',
             fontStyle: 'bold',
             color: '#ffffff',
             stroke: '#000000',
@@ -626,15 +631,15 @@ class GameOverScene extends Phaser.Scene {
         // Final score
         this.add.text(config.width / 2, config.height / 3-30, `Punteggio finale: ${this.finalScore}`, {
             fontFamily: 'Arial',
-            fontSize: '48px',
+            fontSize: '35px',
             color: '#ffffff',
             stroke: '#000000',
             strokeThickness: 4
         }).setOrigin(0.5);
 
         // Play again button - create a container with background and text
-        const buttonWidth = 250;
-        const buttonHeight = 80;
+        const buttonWidth = 150;
+        const buttonHeight = 50;
         const buttonX = config.width / 2;
         const buttonY = config.height / 2 + 25;
         
@@ -654,7 +659,7 @@ class GameOverScene extends Phaser.Scene {
         // Create text without stroke
         const playAgainButtonText = this.add.text(buttonX, buttonY, 'Nuova partita', {
             fontFamily: 'Arial',
-            fontSize: '36px',
+            fontSize: '30px',
             fontStyle: 'bold',
             color: '#000000'  // Black text without stroke
         }).setOrigin(0.5);
