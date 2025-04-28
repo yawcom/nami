@@ -22,7 +22,7 @@ class StartScene extends Phaser.Scene {
         // Game title
         const titleText = this.add.text(config.width / 2, config.height / 5, 'Raccogli i tesori con Nami', {
             fontFamily: 'Arial',
-            fontSize: '48px',
+            fontSize: '30px',
             fontStyle: 'bold',
             color: '#ffffff',
             stroke: '#000000',
@@ -32,9 +32,9 @@ class StartScene extends Phaser.Scene {
 
         // Game instructions text
         const instructionsText = this.add.text(config.width / 2, config.height / 3-30, 
-            'Guida la tua nave pirata attraverso mari insidiosi, raccogli il maggior\nnumero di forzieri del tesoro e schiva scogli, mine e navi nemiche\nper conquistare la gloria dei sette mari!', {
+            'Guida la tua nave pirata attraverso mari insidiosi, raccogli il maggior\n numero di forzieri schiva le isole \nper conquistare la gloria dei sette mari!', {
             fontFamily: 'Arial',
-            fontSize: '18px',
+            fontSize: '12px',
             fontStyle: 'italic',
             color: '#ffffff',
             stroke: '#000000',
@@ -44,7 +44,7 @@ class StartScene extends Phaser.Scene {
         }).setOrigin(0.5).setShadow(2, 2, '#000000', 2, false, true);
 
         instructionsText.setText('');
-        const fullText = 'Guida la tua nave pirata attraverso mari insidiosi, raccogli il maggior\nnumero di forzieri del tesoro e schiva scogli, mine e navi nemiche\nper conquistare la gloria dei sette mari!';
+        const fullText = 'Guida la tua nave pirata attraverso mari insidiosi, raccogli il maggior\n numero di forzieri schiva le isole \nper conquistare la gloria dei sette mari!';
         let i = 0;
 
         this.time.addEvent({
@@ -63,8 +63,8 @@ class StartScene extends Phaser.Scene {
 
 
         // Start button - create a container with background and text
-        const buttonWidth = 200;
-        const buttonHeight = 80;
+        const buttonWidth = 150;
+        const buttonHeight = 50;
         const buttonX = config.width / 2;
         const buttonY = config.height / 2 +25;
         
@@ -85,7 +85,7 @@ class StartScene extends Phaser.Scene {
         // Create text without stroke
         const startButtonText = this.add.text(buttonX, buttonY, 'START', {
             fontFamily: 'Arial',
-            fontSize: '36px',
+            fontSize: '30px',
             fontStyle: 'bold',
             color: '#000000'  // Black text without stroke
         }).setOrigin(0.5);
@@ -247,7 +247,7 @@ class GameScene extends Phaser.Scene {
 
         // Speed increase timer
         this.speedTimer = this.time.addEvent({
-            delay: 20000, // 20 seconds
+            delay: 10000, // 20 seconds
             callback: this.increaseSpeed,
             callbackScope: this,
             loop: true
@@ -268,7 +268,7 @@ class GameScene extends Phaser.Scene {
         const uiY = 20; // Y position for all UI elements
         const textStyle = {
             fontFamily: 'Arial',
-            fontSize: '24px',
+            fontSize: '20px',
             color: '#ffffff',
             stroke: '#000000',
             strokeThickness: 4
@@ -284,7 +284,7 @@ class GameScene extends Phaser.Scene {
         const livesText = this.add.text(0, uiY, 'Vite: 3', textStyle);
         
         // Position UI elements: time left, score center, lives right
-        const padding = 20; // Padding from edges
+        const padding = 150; // Padding from edges
         
         timeText.setPosition(padding, uiY);
         scoreText.setPosition(config.width / 2, uiY).setOrigin(0.5, 0); // Center horizontally
