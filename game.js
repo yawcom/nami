@@ -268,7 +268,7 @@ class GameScene extends Phaser.Scene {
         const uiY = 20; // Y position for all UI elements
         const textStyle = {
             fontFamily: 'Arial',
-            fontSize: '20px',
+            fontSize: '15px',
             color: '#ffffff',
             stroke: '#000000',
             strokeThickness: 4
@@ -284,7 +284,7 @@ class GameScene extends Phaser.Scene {
         const livesText = this.add.text(0, uiY, 'Vite: 3', textStyle);
         
         // Position UI elements: time left, score center, lives right
-        const padding = 150; // Padding from edges
+        const padding = 50; // Padding from edges
         
         timeText.setPosition(padding, uiY);
         scoreText.setPosition(config.width / 2, uiY).setOrigin(0.5, 0); // Center horizontally
