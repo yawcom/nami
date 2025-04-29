@@ -659,7 +659,7 @@ class GameOverScene extends Phaser.Scene {
         // Create text without stroke
         const playAgainButtonText = this.add.text(buttonX, buttonY, 'Nuova partita', {
             fontFamily: 'Arial',
-            fontSize: '30px',
+            fontSize: '20px',
             fontStyle: 'bold',
             color: '#000000'  // Black text without stroke
         }).setOrigin(0.5);
